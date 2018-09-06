@@ -1,4 +1,6 @@
 ﻿body {
+    font-family: 'Garamond', 'Gill Sans','Courier New', 'Futura', 'Gotham', 'Georgia';
+    font-size: 14pt;
     padding-top: 50px;
     padding-bottom: 20px;
 }
