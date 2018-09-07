@@ -7,5 +7,7 @@
         public DataContext() : base("DefaultConnection")
         {
         }
+
+        public System.Data.Entity.DbSet<Sales.Common.Model.Product> Products { get; set; }
     }
 }
