@@ -8,6 +8,6 @@
         {
         }
 
-        public System.Data.Entity.DbSet<Sales.Common.Model.Product> Products { get; set; }
+        public DbSet<Common.Model.Product> Products { get; set; }
     }
 }
