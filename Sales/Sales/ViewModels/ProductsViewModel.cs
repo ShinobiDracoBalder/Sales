@@ -75,9 +75,9 @@
             //    return;
             //}
 
-            var url = Application.Current.Resources["UrlAPI"].ToString();
-            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
-            var controller = Application.Current.Resources["UrlProductsController"].ToString();
+            var url = "https://salesapiservices.azurewebsites.net";
+            var prefix = "/api";
+            var controller = "/Products";
             var response = await this.apiService.GetList<Product>(url, prefix, controller);
             if (!response.IsSuccess)
             {
