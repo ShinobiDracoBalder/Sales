@@ -7,7 +7,7 @@
     <Application.Resources>
         <ResourceDictionary>
 
-            <!-- Locator -->
+            <!-- Locator video 09  -->
             <infra:InstanceLocator x:Key="Locator"/>
 
             <!-- Parameters -->
