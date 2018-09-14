@@ -19,6 +19,10 @@
         [Display(Name = "Image")]
         public string ImagePath { get; set; }
 
+        public string ImageMimeType { get; set; }
+
+        public byte[] ImagenProduct { get; set; }
+
         [DisplayFormat(DataFormatString = "{0:C2}", ApplyFormatInEditMode = false)]
         [Range(0, double.MaxValue, ErrorMessage = "You must select a {0}between {1} and {2}")]
         public Decimal Price { get; set; }
@@ -29,6 +33,8 @@
         [Display(Name = "Publish On")]
         [DataType(DataType.Date)]
         public DateTime PublishOn { get; set; }
+
+       
 
         [NotMapped]
         public byte[] ImageArray { get; set; }
@@ -46,6 +52,10 @@
             }
 
         }
+
+        [Required]
+        [StringLength(50)]
+        public string BarCode { get; set; }
 
         public override string ToString()
         {

@@ -2,6 +2,8 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Windows.Input;
+    using GalaSoft.MvvmLight.Command;
     using Sales.Common.Model;
     using Sales.Services;
     using Xamarin.Forms;
@@ -12,9 +14,11 @@
         private ApiService apiService;
 
         private bool isRefreshing;
+
         private ObservableCollection<Product> products;
 
         //private ObservableCollection<ProductItemViewModel> products;
+        private string filter;
         #endregion
 
         #region Properties
@@ -75,9 +79,10 @@
             //    return;
             //}
 
-            var url = "https://salesapiservices.azurewebsites.net";
-            var prefix = "/api";
-            var controller = "/Products";
+            var url = Application.Current.Resources["UrlAPI"].ToString();
+            var prefix = Application.Current.Resources["UrlPrefix"].ToString();
+            var controller = Application.Current.Resources["UrlProductsController"].ToString();
+
             var response = await this.apiService.GetList<Product>(url, prefix, controller);
             if (!response.IsSuccess)
             {
@@ -86,10 +91,32 @@
                 return;
             }
 
-            this.IsRefreshing = false;
+           
 
             var list = (List < Product >)response.Result;
             this.Products = new ObservableCollection<Product>(list);
+
+            this.IsRefreshing = false;
+        }
+
+
+        #endregion
+
+        #region Commands
+        //public ICommand SearchCommand
+        //{
+        //    get
+        //    {
+        //        return new RelayCommand(RefreshList);
+        //    }
+        //}
+
+        public ICommand RefreshCommand
+        {
+            get
+            {
+                return new RelayCommand(LoadProducts);
+            }
         }
         #endregion
     }

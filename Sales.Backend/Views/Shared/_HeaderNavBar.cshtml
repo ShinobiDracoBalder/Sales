@@ -13,7 +13,36 @@
                 <li>@Html.ActionLink("Home", "Index", "Home")</li>
                 <li>@Html.ActionLink("About", "About", "Home")</li>
                 <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                @if (User.IsInRole("Administrator"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Administrator<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("UserTypes", "Index", "UserTypes")</li>
+                            <li>@Html.ActionLink("Users", "Index", "Users")</li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("PowerUser"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Users<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Products", "Index", "Products")</li>
+                        </ul>
+                    </li>
+                }
+                @if (User.IsInRole("Customer") || User.IsInRole("PowerUser"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Moviments<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>@Html.ActionLink("Orders", "Index", "Orders")</li>
+                            <li>@Html.ActionLink("Purchases", "Index", "Purchases")</li>
+                            <li>@Html.ActionLink("Sales", "Index", "Sales")</li>
+                        </ul>
+                    </li>
+                }
             </ul>
             @Html.Partial("_LoginPartial")
         </div>

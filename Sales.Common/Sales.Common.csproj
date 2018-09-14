@@ -42,6 +42,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -53,7 +54,11 @@
   <ItemGroup>
     <Compile Include="Model\Product.cs" />
     <Compile Include="Model\Response.cs" />
+    <Compile Include="Model\RolesHelper.cs" />
     <Compile Include="Model\TokenResponse.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserRequest.cs" />
+    <Compile Include="Model\UserType.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
