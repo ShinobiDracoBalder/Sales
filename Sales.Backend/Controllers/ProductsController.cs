@@ -67,7 +67,7 @@
 
                         if (view.LifeLogo != null)
                         {
-                            pic = FilesHelper.UploadPhoto(view.LifeLogo, folder, string.Format("{0}{1}", product.BarCode, product.ProductId));
+                            pic = FilesHelper.UploadPhoto(view.LifeLogo, folder, string.Format("{0}", product.BarCode), string.Format("{0}", product.ProductId));
 
                             product.ImageMimeType = view.LifeLogo.ContentType;
                             int length = view.LifeLogo.ContentLength;
@@ -176,7 +176,7 @@
 
                 if (view.LifeLogo != null)
                 {
-                    pic = FilesHelper.UploadPhoto(view.LifeLogo, folder, string.Format("{0}{1}", view.BarCode, view.ProductId));
+                    pic = FilesHelper.UploadPhoto(view.LifeLogo, folder, string.Format("{0}", product.BarCode), string.Format("{0}", product.ProductId));
 
                     view.ImageMimeType = view.LifeLogo.ContentType;
                     int length = view.LifeLogo.ContentLength;
