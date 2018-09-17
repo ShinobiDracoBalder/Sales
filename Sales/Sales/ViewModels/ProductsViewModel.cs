@@ -17,7 +17,7 @@
 
         private ObservableCollection<Product> products;
 
-        //private ObservableCollection<ProductItemViewModel> products;
+       //private ObservableCollection<ProductItemViewModel> products;
         private string filter;
         #endregion
 
@@ -71,13 +71,13 @@
         {
             this.IsRefreshing = true;
 
-            //var connection = await this.apiService.CheckConnection();
-            //if (!connection.IsSuccess)
-            //{
-            //    this.IsRefreshing = false;
-            //    await Application.Current.MainPage.DisplayAlert(Languages.Error, connection.Message, Languages.Accept);
-            //    return;
-            //}
+            var connection = await this.apiService.CheckConnection();
+            if (!connection.IsSuccess)
+            {
+                this.IsRefreshing = false;
+                await Application.Current.MainPage.DisplayAlert("Languages.Error", connection.Message, "Languages.Accept");
+                return;
+            }
 
             var url = Application.Current.Resources["UrlAPI"].ToString();
             var prefix = Application.Current.Resources["UrlPrefix"].ToString();

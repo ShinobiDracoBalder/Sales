@@ -14,7 +14,7 @@
     using Sales.Common.Model;
     using Sales.Domain.Model;
 
-    [RoutePrefix("api/Products")]
+    //[RoutePrefix("api/Products")]
     public class ProductsController : ApiController
     {
         private DataContext db = new DataContext();

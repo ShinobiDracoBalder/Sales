@@ -7,10 +7,36 @@
     using System.Threading.Tasks;
 
     using Newtonsoft.Json;
+    using Plugin.Connectivity;
     using Sales.Common.Model;
     public class ApiService
     {
+        public async Task<Response> CheckConnection()
+        {
+            if (!CrossConnectivity.Current.IsConnected)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Languages.TurnOnInternet",
+                };
+            }
 
+            var isReachable = await CrossConnectivity.Current.IsRemoteReachable("google.com");
+            if (!isReachable)
+            {
+                return new Response
+                {
+                    IsSuccess = false,
+                    Message = "Languages.NoInternet",
+                };
+            }
+
+            return new Response
+            {
+                IsSuccess = true,
+            };
+        }
         public async Task<TokenResponse> GetToken(string urlBase, string username, string password)
         {
             try
